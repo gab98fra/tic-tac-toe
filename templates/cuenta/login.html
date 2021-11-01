@@ -1,0 +1,36 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="author" content="Gabriel">
+      <title>Juego el Gato</title>
+      <link rel="stylesheet" href="{% static 'css/main.css' %}">
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+            Login
+         </div>
+         {% if form.errors %}
+         <span>*****Revise sus credenciales de acceso*****</span>
+         {% endif %}
+         <form action="#" method="POST">{% csrf_token %}
+            <div class="field">
+                {{form.username}}
+               <label>Usuario</label>
+            </div>
+            <br>
+            <div class="field">
+                {{form.password}}
+               <label>Contraseña</label>
+            </div>
+            <br>
+            <div class="field">
+               <input type="submit" value="Iniciar sesión">
+            </div>
+         </form>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gabriel">
+    <title>Jugando El gato ...</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <h1 class="title" >Por favor empiece usted</h1>
+    <span> #Partida: {{id_partida}} &nbsp;<input type="color" value="#305822"> X: Usuario admin | <input type="color" value="#DC3011"> O: Máquina</span>
+    {% if estado %}
+    <p class="field" >El ganador es "{{ganador}}"</p>
+    <a href="{% url 'home' %}"><button>Jugar otra partida</button></a>
+    <a href="{% url 'estadisticas' %}"><button>Ver estadísticas</button></a>
+    {% endif %}
+    <div>
+        <table>
+            <tbody>
+                <form action="" method="POST">{% csrf_token %}
+                    <tr style="height: 50px;background-color:cadetblue;">
+                        {% if a1 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px; background-color:#305822;" type="submit" name="opcion" value="1" disabled>X</button></td>
+                        {% elif a1 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color:#DC3011;" type="submit" name="opcion" value="1" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="1">1</button></td>
+                        {% endif %}
+                        {% if a2 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #305822;" type="submit" name="opcion" value="2" disabled>X</button></td>
+                        {% elif a2 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="2" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="2">2</button></td>
+                        {% endif %}
+                        {% if a3 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px; background-color: #305822;" type="submit" name="opcion" value="3" disabled>X</button></td>
+                        {% elif a3 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="3" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="3">3</button></td>
+                        {% endif %}
+                    </tr>
+                    <tr style="height: 50px;background-color: cadetblue;">
+                        {% if a4 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color:#305822;" type="submit" name="opcion" value="4" disabled>X</button></td>
+                        {% elif a4 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="4" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="4">4</button></td>
+                        {% endif %}
+                        {% if a5 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #305822;" type="submit" name="opcion" value="5" disabled>X</button></td>
+                        {% elif a5 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="5" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="5">5</button></td>
+                        {% endif %}
+                        {% if a6 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color:#305822;" type="submit" name="opcion" value="6" disabled>X</button></td>
+                        {% elif a6 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="6" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="6">6</button></td>
+                        {% endif %}
+                    </tr>
+                    <tr style="height: 50px;background-color:cadetblue;">
+                        {% if a7 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color:#305822;" type="submit" name="opcion" value="7" disabled>X</button></td>
+                        {% elif a7 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="7" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="7">7</button></td>
+                        {% endif %}
+                        {% if a8 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #305822;" type="submit" name="opcion" value="8" disabled>X</button></td>
+                        {% elif a8 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="8" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="8">8</button></td>
+                        {% endif %}
+                        {% if a9 == 'admin' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #305822;" type="submit" name="opcion" value="9" disabled>X</button></td>
+                        {% elif a9 == 'maquina' %}
+                        <td style="width: 80px;"><button style="width: 80px;background-color: #DC3011;" type="submit" name="opcion" value="9" disabled>O</button></td>
+                        {% else %}
+                        <td style="width: 80px;"><button class="button" style="width: 80px;" type="submit" name="opcion" value="9">9</button></td>
+                        {% endif %}
+                    </tr>
+                </form>
+            </tbody>     
+        </table> 
+    </div>
+    <a href="{% url 'logout' %}"><button>Cerrar sesión</button></a>
+<script>
+    let estado="{{estado}}";
+    let button = document.querySelector(".button");
+    if (estado=="True") {
+
+        alert("Juego Finalizado");
+        button.disabled = true;
+    }
+</script>
+</body>
+</html>
