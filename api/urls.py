@@ -1,9 +1,9 @@
 from django.urls import path
-from api.views import PartidaView, API_TemplateView
+from api.views import APIView, API_TemplateView, DetalleApi
 
 
 urlpatterns = [
-    path('partida_api/', PartidaView.as_view(), name="partida_api"),
-    path('partida_api_list/', API_TemplateView.as_view(), name="partida_api_list"),
-
+    path('api_list/', API_TemplateView.as_view(), name="api_list"),
+    path('api/', APIView.as_view(), name="api"),
+    path('detalle_api/<int:pk>/', DetalleApi.as_view(), name="detalle_api"),
 ]

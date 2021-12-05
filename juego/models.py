@@ -20,3 +20,9 @@ class OpcionModel(models.Model):
     created=models.DateField(auto_now_add=True)
     user=models.CharField(max_length=30)
     partida=models.ForeignKey(PartidaModel, on_delete=models.CASCADE)
+
+
+class ArhivoCargar(models.Model):
+    
+    id=models.AutoField(primary_key=True)
+    img=models.ImageField()

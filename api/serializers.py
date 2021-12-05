@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from juego.models import PartidaModel, OpcionModel
-
+from .models import APImodel
 
 class PartidaSerializer(ModelSerializer):
     class Meta:
@@ -15,3 +15,7 @@ class OptionSerializer(ModelSerializer):
         fields=['id', 'opcion', 'partida']
 
 
+class APISerializer(ModelSerializer):
+    class Meta:
+        model=APImodel
+        fields="__all__"
