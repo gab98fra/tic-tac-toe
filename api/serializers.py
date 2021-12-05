@@ -10,12 +10,14 @@ class PartidaSerializer(ModelSerializer):
 
 
 class OptionSerializer(ModelSerializer):
+    
     class Meta:
         model=OpcionModel
         fields=['id', 'opcion', 'partida']
 
 
 class APISerializer(ModelSerializer):
+
     class Meta:
         model=APImodel
         fields="__all__"

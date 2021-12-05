@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, DestroyAPIView
 from juego.models import PartidaModel, OpcionModel
 from api.serializers import PartidaSerializer, OptionSerializer
 from .serializers import APISerializer
@@ -71,4 +71,47 @@ class ListAPi(ListAPIView):
     def get_queryset(self):
         
         return APImodel.objects.all()
+    
+class CreateAPI(CreateAPIView):
+    "Crear un objeto"
+    
+    serializer_class=APISerializer
+    
+    def post(self, request):
+        serializers=self.serializer_class(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response({"mensaje": "ha sido creado"}, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DetalleAPIView(RetrieveAPIView):
+    "Detalle de un solo objeto, dependiente de pk en la url"
+
+    serializer_class=APISerializer
+    
+    def get_queryset(self):
+        "Es necesario incluir esta función"
+
+        
+        return self.get_serializer().Meta.model.objects.filter(estado=True)
+
+
+class EliminarAPI(DestroyAPIView):
+    "Elimina un objeto dependiente del pk enviado"
+
+    serializer_class=APISerializer
+
+    def get_queryset(self):
+        "Es necesario incluir esta función"
+        
+        return self.get_serializer().Meta.model.objects.filter(estado=True)
+
+    def delete(self, request, pk=None):
+        api=self.get_queryset().filter(id=pk).first()
+        if api:
+            api.estado=False
+            api.save()
+            return Response({"mensaje": "Producto eliminado"}, status=status.HTTP_200_OK)
+        
+        return Response({"error":"No existe ningun datos con id indicado"}, status=status.HTTP_400_BAD_REQUEST)
     
