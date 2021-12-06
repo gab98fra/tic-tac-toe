@@ -13,6 +13,7 @@ from .models import APImodel
 from .mixins import AccesoMixin
 """
     Documentación: https://www.cdrf.co/
+    Swager: https://swagger.io/
 """
 
 class API_TemplateView(TemplateView):
