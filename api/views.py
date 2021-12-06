@@ -14,6 +14,7 @@ from .mixins import AccesoMixin
 """
     Documentación: https://www.cdrf.co/
     Swager: https://swagger.io/
+    JWT: https://jwt.io/
 """
 
 class API_TemplateView(TemplateView):
